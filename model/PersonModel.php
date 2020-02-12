@@ -7,7 +7,7 @@
       return $this->name;
     }
 
-    public function setName(string $name) {
+    public function setName(string $name): PersonModel {
       $this->name = $name;
       return $this;
     }
@@ -16,7 +16,7 @@
       return $this->age;
     }
 
-    public function setAge(int $age) {
+    public function setAge(int $age): PersonModel {
       $this->age = $age;
       return $this;
     }
@@ -32,5 +32,6 @@
       if (!$stmt->execute())
         return $stmt->errorInfo();
       
+      header('Location: ../view/success.php');
     }
   }

@@ -1,3 +1,5 @@
+<?php require_once './head.php' ?>
+
 <article class="app">
   <h1>This is my php test</h1>
   <div>
