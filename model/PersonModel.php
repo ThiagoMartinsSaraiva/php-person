@@ -20,4 +20,17 @@
       $this->age = $age;
       return $this;
     }
+
+    public function insert() {
+      $connection = Database::connect();
+      $stmt = $connection->prepare("INSERT INTO person (name, age) " .
+                                  "VALUES (:name, :age)");
+  
+      $stmt->bindValue(':name', $this->getName());
+      $stmt->bindValue(':age', $this->getAge());
+
+      if (!$stmt->execute())
+        return $stmt->errorInfo();
+      
+    }
   }
