@@ -34,4 +34,19 @@
       
       header('Location: ../view/success.php');
     }
+
+    public function list() {
+      $connection = Database::connect();
+      $stmt = $connection->prepare("SELECT * FROM person");
+
+      if (!$stmt->execute())
+        return $stmt->errorInfo();
+
+      $people = array();
+      while ($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $people[] = array("name" => $result['name'],
+                          "age" => $result['age']);
+      }
+      return $people;
+    }
   }
